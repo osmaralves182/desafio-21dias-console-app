@@ -6,9 +6,51 @@ namespace console_desafio21dias_api
   {
     static void Main(string[] args)
     {
+      // Desafio Aula 3
+      int sair = 1;
+      List<dynamic> alunos = new List<dynamic>();
+      while (sair != 0)
+      {
+        Console.WriteLine($"Digite o nome do aluno:");
+        string nome = Console.ReadLine();
+        Console.WriteLine($"Digite a matrícula do aluno:");
+        string matricula = Console.ReadLine();
+        Console.WriteLine($"Digite a primeira nota do aluno:");
+        int nota1 = Convert.ToInt32(Console.ReadLine());
+        Console.WriteLine($"Digite a segunda nota do aluno:");
+        int nota2 = Convert.ToInt32(Console.ReadLine());
+        Console.WriteLine($"Digite a terceira nota do aluno:");
+        int nota3 = Convert.ToInt32(Console.ReadLine());
+
+        alunos.Add(new
+        {
+          Nome = nome,
+          Matricula = matricula,
+          Nota1 = nota1,
+          Nota2 = nota2,
+          Nota3 = nota3,
+          Media = ((nota1 + nota2 + nota3) / 3)
+        });
+
+        Console.WriteLine($"Digite: 1 - Cadastrar um novo aluno\n2 - Visualizar os dados dos alunos \n0 - Sair");
+        sair = Convert.ToInt32(Console.ReadLine());
+
+        if (sair == 0) break;
+        else if (sair == 2)
+        {
+          foreach (var aluno in alunos)
+          {
+            Console.WriteLine($"Nome do aluno: {aluno.Nome}");
+            Console.WriteLine($"Matrícula do aluno: {aluno.Matricula}");
+            Console.WriteLine($"Notas do aluno: {aluno.Nota1}, {aluno.Nota2} e {aluno.Nota3}");
+            Console.WriteLine($"Média final: {aluno.Media}");
+          }
+          continue;
+        }
+      }
 
       // Aula 3 - Loop | Minuto: 33 Minutos
-      Console.WriteLine("Digite o número inicial: ");
+      /*Console.WriteLine("Digite o número inicial: ");
       int numeroInicial = Convert.ToInt32(Console.ReadLine());
       Console.WriteLine("Digite o número final: ");
       int numeroFinal = Convert.ToInt32(Console.ReadLine());
@@ -40,11 +82,11 @@ namespace console_desafio21dias_api
       }
 
       // Não é tão usada
-      /*string [][] alunos = new string [5][5];
+      string [][] alunos = new string [5][5];
 
       alunos[0][0] = "Osmar";
       alunos[1][0] = "123";
-      alunos[2][0] = "10, 9, 8";*/
+      alunos[2][0] = "10, 9, 8";
 
       List<dynamic> alunos = new List<dynamic>();
 
@@ -76,6 +118,7 @@ namespace console_desafio21dias_api
         Console.WriteLine($"Notas do aluno: {aluno.Notas}");
         Console.WriteLine($"---------------------------------");
       }
+      ------------------------------ Fim Aula 3 */
 
       //Aula 1 e 2
       /*Console.WriteLine("Digite o primeiro valor:");
