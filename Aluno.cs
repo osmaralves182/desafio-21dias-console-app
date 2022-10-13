@@ -5,7 +5,19 @@ namespace console_desafio21dias_api
     // Propriedades
     public string Nome { get; set; }
     public string Matricula { get; set; }
-    public List<double> Notas { get; set; }
+    private List<double> notas;
+    public List<double> Notas
+    {
+      get
+      {
+        if (notas == null) this.notas = new List<double>();
+        return this.notas;
+      }
+      set
+      {
+        this.notas = value;
+      }
+    }
 
     // Métodos
     public double CalcularMedia()

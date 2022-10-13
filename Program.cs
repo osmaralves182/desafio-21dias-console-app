@@ -8,29 +8,23 @@ namespace console_desafio21dias_api
     {
       // Desafio Aula 3
       int sair = 1;
-      List<dynamic> alunos = new List<dynamic>();
+      List<Aluno> alunos = new List<Aluno>();
       while (sair != 0)
       {
-        Console.WriteLine($"Digite o nome do aluno:");
-        string nome = Console.ReadLine();
-        Console.WriteLine($"Digite a matrícula do aluno:");
-        string matricula = Console.ReadLine();
-        Console.WriteLine($"Digite a primeira nota do aluno:");
-        int nota1 = Convert.ToInt32(Console.ReadLine());
-        Console.WriteLine($"Digite a segunda nota do aluno:");
-        int nota2 = Convert.ToInt32(Console.ReadLine());
-        Console.WriteLine($"Digite a terceira nota do aluno:");
-        int nota3 = Convert.ToInt32(Console.ReadLine());
+        var aluno = new Aluno();
 
-        alunos.Add(new
+        Console.WriteLine($"Digite o nome do aluno:");
+        aluno.Nome = Console.ReadLine();
+        Console.WriteLine($"Digite a matrícula do aluno:");
+        aluno.Matricula = Console.ReadLine();
+
+        for (int i = 0; i < 4; i++)
         {
-          Nome = nome,
-          Matricula = matricula,
-          Nota1 = nota1,
-          Nota2 = nota2,
-          Nota3 = nota3,
-          Media = ((nota1 + nota2 + nota3) / 3)
-        });
+          Console.WriteLine($"Digite a nota {i} do aluno:");
+          aluno.Notas.Add(Convert.ToInt32(Console.ReadLine()));
+        }
+
+        alunos.Add(aluno);
 
         Console.WriteLine($"Digite: 1 - Cadastrar um novo aluno\n2 - Visualizar os dados dos alunos \n0 - Sair");
         sair = Convert.ToInt32(Console.ReadLine());
@@ -38,12 +32,15 @@ namespace console_desafio21dias_api
         if (sair == 0) break;
         else if (sair == 2)
         {
-          foreach (var aluno in alunos)
+          foreach (var aluno1 in alunos)
           {
-            Console.WriteLine($"Nome do aluno: {aluno.Nome}");
-            Console.WriteLine($"Matrícula do aluno: {aluno.Matricula}");
-            Console.WriteLine($"Notas do aluno: {aluno.Nota1}, {aluno.Nota2} e {aluno.Nota3}");
-            Console.WriteLine($"Média final: {aluno.Media}");
+            Console.WriteLine($"___________________________________________");
+            Console.WriteLine($"Nome do aluno: {aluno1.Nome}");
+            Console.WriteLine($"Matrícula do aluno: {aluno1.Matricula}");
+            Console.WriteLine($"Notas do aluno: {string.Join(",", aluno1.Notas.ToArray())}");
+            Console.WriteLine($"Média final: {aluno.CalcularMedia()}");
+            Console.WriteLine($"Situação: {aluno.Situacao()}");
+            Console.WriteLine($"___________________________________________");
           }
           continue;
         }
