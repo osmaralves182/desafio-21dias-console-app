@@ -10,7 +10,7 @@ namespace console_desafio21dias_api
     {
       get
       {
-        if (notas == null) this.notas = new List<double>();
+        if (this.notas == null) this.notas = new List<double>();
         return this.notas;
       }
       set
