@@ -2,7 +2,7 @@ using System.Data;
 using System.Data.SqlClient;
 namespace console_desafio21dias_api
 {
-  partial class Aluno
+  class Aluno
   {
     #region Propriedades
     public int Id { get; set; }

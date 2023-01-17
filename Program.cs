@@ -14,7 +14,7 @@ namespace console_desafio21dias_api
         Notas = new List<double>() { 6, 6, 5 },
       }.Salvar();*/
 
-      var alunosNoBanco = Aluno.Todos();
+      var alunosNoBanco = AlunoService.Todos();
       foreach (var aluno in alunosNoBanco)
       {
 

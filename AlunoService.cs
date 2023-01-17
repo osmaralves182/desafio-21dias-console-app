@@ -2,7 +2,7 @@ using System.Data;
 using System.Data.SqlClient;
 namespace console_desafio21dias_api
 {
-  partial class Aluno
+  class AlunoService
   {
     #region Métodos de classe ou estáticos
     private static string connectionString()
@@ -29,18 +29,6 @@ namespace console_desafio21dias_api
       sqlConn.Dispose();
     }
 
-    public void Salvar()
-    {
-      if (this.Id > 0)
-      {
-        Aluno.Atualizar(this);
-      }
-      else
-      {
-        Aluno.Incluir(this);
-      }
-    }
-
     public static void Atualizar(Aluno aluno)
     {
       SqlConnection sqlConn = new SqlConnection(connectionString());
@@ -59,11 +47,6 @@ namespace console_desafio21dias_api
 
       sqlConn.Close();
       sqlConn.Dispose();
-    }
-
-    public void Apagar()
-    {
-      Aluno.ApagarPorId(this.Id);
     }
 
     public static void ApagarPorId(int id)
