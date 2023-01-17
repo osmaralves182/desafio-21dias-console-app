@@ -6,6 +6,31 @@ namespace console_desafio21dias_api
   {
     static void Main(string[] args)
     {
+      /* Inserindo um aluno manualmente
+      new Aluno()
+      {
+        Nome = "Gilmar",
+        Matricula = "003",
+        Notas = new List<double>() { 6, 6, 5 },
+      }.Salvar();*/
+
+      var alunosNoBanco = Aluno.Todos();
+      foreach (var aluno in alunosNoBanco)
+      {
+
+        // aluno.Salvar(); // comando para salvar
+        // aluno.Apagar(); // comando para apagar
+
+        Console.WriteLine($"___________________________________________");
+        Console.WriteLine($"Nome do aluno: {aluno.Nome}");
+        Console.WriteLine($"Matrícula do aluno: {aluno.Matricula}");
+        Console.WriteLine($"Notas do aluno: {string.Join(",", aluno.Notas.ToArray())}");
+        Console.WriteLine($"Média final: {aluno.CalcularMedia()}");
+        Console.WriteLine($"Situação: {aluno.Situacao()}");
+        Console.WriteLine($"___________________________________________");
+      }
+
+      return;
       // Desafio Aula 3
       int sair = 1;
       List<Aluno> alunos = new List<Aluno>();
